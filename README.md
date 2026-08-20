@@ -63,7 +63,7 @@ TheMealDB provides meal data including:
 
 The application sends a search request to TheMealDB API and dynamically displays the returned meal information on the webpage.
 
-**API:** TheMealDB
+**API:** [TheMealDB](https://www.themealdb.com/)
 
 ---
 

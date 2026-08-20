@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe Finder | Discover Delicious Recipes</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+             <img src="images/Recipe_Finder_logo.png" alt="Recipe Finder Logo">
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#recipes">Recipes</a>
+        </div>
+
+        <!-- HAMBURGER -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="welcome">
+                ✨ Explore. Cook. Enjoy.
+            </span>
+
+            <h1>
+                Find Your
+                <span>Perfect Recipe</span>
+            </h1>
+
+            <p>
+                Discover delicious recipes from around the world
+                and turn simple ingredients into amazing meals.
+            </p>
+
+            <!-- SEARCH -->
+
+            <div class="hero-search">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="What do you want to cook today?"
+                >
+
+                <button onclick="searchRecipe()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+            <div class="hero-tags">
+                <span>🍗 Chicken</span>
+                <span>🍝 Pasta</span>
+                <span>🥗 Healthy</span>
+                <span>🍰 Desserts</span>
+            </div>
+
+        </div>
+
+
+        <!-- HERO IMAGE -->
+
+        <div class="hero-image">
+
+            <div class="circle"></div>
+
+            <img
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80"
+                alt="Healthy food"
+            >
+
+            <div class="floating-card card-one">
+                🍕
+                <span>Delicious</span>
+            </div>
+
+            <div class="floating-card card-two">
+                ⭐
+                <span>Easy Recipes</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCROLL INDICATOR -->
+
+    <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div>↓</div>
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="categories" id="categories">
+
+        <div class="section-heading">
+
+            <span>EXPLORE</span>
+
+            <h2>What are you craving?</h2>
+
+            <p>
+                Choose a category and discover your next favorite meal.
+            </p>
+
+        </div>
+
+
+        <div class="category-container">
+
+            <div class="category-card" onclick="searchByCategory('Chicken')">
+                <div class="category-icon">🍗</div>
+                <h3>Chicken</h3>
+                <p>Delicious chicken dishes</p>
+            </div>
+
+            <div class="category-card" onclick="searchByCategory('Pasta')">
+                <div class="category-icon">🍝</div>
+                <h3>Pasta</h3>
+                <p>Italian favorites</p>
+            </div>
+
+            <div class="category-card" onclick="searchByCategory('Vegetarian')">
+                <div class="category-icon">🥗</div>
+                <h3>Vegetarian</h3>
+                <p>Fresh & healthy meals</p>
+            </div>
+
+            <div class="category-card" onclick="searchByCategory('Dessert')">
+                <div class="category-icon">🍰</div>
+                <h3>Desserts</h3>
+                <p>Sweet treats</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECIPES -->
+
+    <section class="recipes-section" id="recipes">
+
+        <div class="section-heading">
+
+            <span>RECIPES</span>
+
+            <h2>Discover Delicious Meals</h2>
+
+            <p>
+                Search for a recipe and start cooking today.
+            </p>
+
+        </div>
+
+
+        <div id="loading" class="loading">
+            <div class="loader"></div>
+            Finding delicious recipes...
+        </div>
+
+
+        <div
+            id="recipeContainer"
+            class="recipe-container">
+        </div>
+
+    </section>
+
+
+    <!-- RECIPE MODAL -->
+
+    <div id="recipeModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-btn"
+                onclick="closeModal()">
+                ✕
+            </button>
+
+            <img
+                id="recipeImage"
+                src=""
+                alt="Recipe"
+            >
+
+            <h2 id="recipeName"></h2>
+
+            <p>
+                <strong>Category:</strong>
+                <span id="recipeCategory"></span>
+            </p>
+
+            <p>
+                <strong>Cuisine:</strong>
+                <span id="recipeArea"></span>
+            </p>
+
+            <h3>🥕 Ingredients</h3>
+
+            <ul id="ingredientsList"></ul>
+
+            <h3>👨‍🍳 Instructions</h3>
+
+            <p id="instructions"></p>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+    <div class="footer-container">
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <img
+                src="images/Recipe_Finder_logo.png"
+                alt="Recipe Finder Logo"
+            >
+
+            <p>
+                Discover delicious recipes, explore new flavors,
+                and make every meal special.
+            </p>
+
+            
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+
+            <a href="#categories">Categories</a>
+
+            <a href="#recipes">Recipes</a>
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="footer-column">
+
+            <h3>Popular Categories</h3>
+
+            <a href="#" onclick="searchByCategory('Chicken')">
+                🍗 Chicken
+            </a>
+
+            <a href="#" onclick="searchByCategory('Pasta')">
+                🍝 Pasta
+            </a>
+
+            <a href="#" onclick="searchByCategory('Vegetarian')">
+                🥗 Vegetarian
+            </a>
+
+            <a href="#" onclick="searchByCategory('Dessert')">
+                🍰 Desserts
+            </a>
+
+        </div>
+
+
+        <!-- ABOUT -->
+
+        <div class="footer-column">
+
+            <h3>Recipe Finder</h3>
+
+            <p>
+                Your little kitchen companion for finding
+                tasty recipes from around the world.
+            </p>
+
+            <p class="footer-highlight">
+                👩‍🍳 Cook with love. ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Recipe Finder. All rights reserved.
+        </p>
+
+        <p>
+            Made with ❤️ for food lovers
+        </p>
+
+    </div>
+
+</footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
